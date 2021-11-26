@@ -3,16 +3,18 @@
 const task=document.getElementById('task');
 const priority=document.getElementById('priority');
 const myTable=document.querySelector('tbody');
+const myForm=document.querySelector('form');
 
 const myButton=document.getElementById('myButton');
 
 myButton.addEventListener('click', function(e){
     e.preventDefault();
     addToDo();
+    myForm.reset();
 });
 
 function addToDo(){
-    if(task.value !== ''){
+    if(task.value !== '' && priority.value!=="choose priority"){
         console.log(task.value);
         console.log(priority.value);
 // kuriu eilute, ja idedu i table body
@@ -42,7 +44,16 @@ function addToDo(){
       myCol1.appendChild(myPriority)
       myRow.appendChild(myCol1);
 
+    //   delete mygtuko kurimas
+    const myCol2=document.createElement('td');
+    const myDeleteBtn=document.createElement('button');
+    myDeleteBtn.innerText="Delete";
+    myDeleteBtn.className="btn btn-danger";
+    myCol2.appendChild(myDeleteBtn);
+    myRow.appendChild(myCol2);
+
+    
     } else {
-        alert("Iveskite uzduoti")
+        alert("Visi laukai turi buti uzpildyti")
     }
 }
